@@ -1,0 +1,17 @@
+echo "*** tests starting"
+
+echo "*** compiling modules: frontend"
+
+gcc -Wall -c Dmenu.c menu.c
+
+echo "*** compiling modules: backend"
+
+gcc -Wall -c main.c
+
+echo "*** Build and Test: compiling system"
+gcc -Wall Dmenu.c menu.c main.c -o crypt
+
+echo "*** cleaning up ..."
+rm *.o 
+
+echo "...tests finished"

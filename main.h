@@ -1,6 +1,6 @@
 
 /**************************************************************/
-/* DVGC19 decryptation program                                */
+/* DVGC19 decryption program                                */
 /**************************************************************/
 /* A. PAYNE & A. KÄCK - test version                          */
 /**************************************************************/
@@ -12,10 +12,11 @@
 /* function prototypes                                        */
 /**************************************************************/
 
-void printc();
-void printd();
+void printt(char i);
+void listf();
 void analysec();
 void decryptt();
+void cryptt();
 
 
 #endif
