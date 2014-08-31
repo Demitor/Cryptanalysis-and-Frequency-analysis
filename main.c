@@ -29,8 +29,11 @@
 double x[ARRLEN], p[ARRLEN];
 
 char a[ARRLEN] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '};
-char dec[ARRLEN] = {'b','k','u','n','f','x','w',' ','h','t','r','g','q','l','z','p','j','c','s','y','e','o','m','d','a','i','v'};
-char cry[ARRLEN] = {'r','f','q','b','c','g','a','y','k',' ','t','s','u','j','d','h','e','i','l','o','w','z','n','x','v','m','p'};
+//char dec[ARRLEN] = {'b','k','u','n','f','x','w',' ','h','t','r','g','q','l','z','p','j','c','s','y','e','o','m','d','a','i','v'};
+//z xyvwturspqnolmjkhifgdebca
+char dec[ARRLEN] = {'z',' ','x','y','v','w','t','u','r','s','p','q','n','o','l','m','j','k','h','i','f','g','d','e','b','c','a'};
+//char cry[ARRLEN] = {'r','f','q','b','c','g','a','y','k',' ','t','s','u','j','d','h','e','i','l','o','w','z','n','x','v','m','p'};
+char cry[ARRLEN] = {'z',' ','x','y','v','w','t','u','r','s','p','q','n','o','l','m','j','k','h','i','f','g','d','e','b','c','a'};
 double f[ARRLEN] = {6.9, 0.4, 3.0, 3.2, 8.7, 2.3, 2.1, 2.7, 7.5, 0.1, 0.5, 4.6, 2.2, 7.0, 5.2, 1.7, 0.1, 4.6, 5.3, 6.1, 2.7, 1.5, 0.4, 0.2, 1.0, 0, 19.7};
 
 int total = 0;
