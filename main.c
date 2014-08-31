@@ -83,12 +83,40 @@ static void listfiles()
 
 
 /****************************************************************************/
-/* calculates the number of letters occurring in percent                    */
+/* print crypted text                                                       */
+/****************************************************************************/
+
+static void printcrypted()
+{
+	FILE *fp;
+ 	fp = fopen("cryptengtext.txt", read);
+ 	int c = 0;
+	
+ 	checkfile(fp);
+	
+ 	printf("\n");
+ 	while(!feof(fp))
+ 	{
+ 		c = fgetc(fp);
+ 		printf("%c", c);
+ 	}
+ 	printf("\n");
+	fclose(fp);
+}
+
+
+
+/****************************************************************************/
+/* encrypting an english text                                               */
 /****************************************************************************/
 
 static void crypt()
 {
-	FILE *fp = fopen("engtext.txt", read);
+	char str[80];
+	printf("\nEnter name of file: ");
+  scanf("%s", str);
+	
+	FILE *fp = fopen(str, read);
 	FILE *f = fopen("cryptengtext.txt", write);
 	int c = 0;
 	
@@ -108,6 +136,8 @@ static void crypt()
 	printf("\n");
 	fclose(f);
 	fclose(fp);
+	
+	printcrypted();
 }
 
 
@@ -128,11 +158,15 @@ static void percent()
 
 
 /****************************************************************************/
-/* print decrypted text                                                     */
+/* print text                                                               */
 /****************************************************************************/
 
-static void printtext(char i)
+static void printtext()
 {
+	char i[80];
+	printf("\nEnter name of file: ");
+  scanf("%s", i);
+  
 	FILE *fp;
 	fp = fopen(i, read);
 	int c = 0;
@@ -149,14 +183,44 @@ static void printtext(char i)
 	fclose(fp);
 }
 
+
+
+/****************************************************************************/
+/* print decrypted text                                                     */
+/****************************************************************************/
+
+static void printdecrypted()
+{
+	FILE *fp;
+	fp = fopen("decrypted.txt", read);
+	int c = 0;
+	
+	checkfile(fp);
+	
+	printf("\n");
+	while(!feof(fp))
+	{
+		c = fgetc(fp);
+		printf("%c", c);
+	}
+	printf("\n");
+	fclose(fp);
+}
+
+
+
 /****************************************************************************/
 /* decrypts text                                                            */
 /****************************************************************************/
 
 static void decrypt()
 {
-	FILE *f = fopen("file.txt", write);
-	FILE *fp = fopen("cipher.in", read);
+	char str[80];
+	printf("\nEnter name of file: ");
+  scanf("%s", str);
+  
+	FILE *f = fopen("decrypted.txt", write);
+	FILE *fp = fopen(str, read);
 	int c = 0;
 	
 	printf("\n");
@@ -167,7 +231,7 @@ static void decrypt()
 		int i = 0;
 		c = fgetc(fp);
 		
-		while(c != dec[i]){ i++; }
+		while(c != dec[i] && i < ARRLEN){ i++; }
 		
 		fprintf(f, "%c", a[i]);
 		
@@ -177,35 +241,9 @@ static void decrypt()
 	fclose(fp);
 	fclose(f);
 	
-	//printdecrypted();
+	printdecrypted();
 } 
 
-
-
-/****************************************************************************/
-/* print crypted text                                                       */
-/****************************************************************************/
-
-// static void printcrypted()
-// {
-// 	FILE *fp;
-// 	fp = fopen("cipher.in", read);
-// 	int c = 0;
-	
-// 	if (fp == NULL)
-// 	{
-// 		printf("%s\n", "File cannot be opened...");
-// 	}
-	
-// 	printf("\n");
-// 	while(!feof(fp))
-// 	{
-// 		c = fgetc(fp);
-// 		printf("%c", c);
-// 	}
-// 	printf("\n");
-// 	fclose(fp);
-// }
 
 
 
@@ -215,6 +253,7 @@ static void decrypt()
 
 static void printarr()
 {
+	
 	char abc = 'a';
 	int i = 0;
 	
@@ -229,6 +268,7 @@ static void printarr()
 	abc = ' ';
 	i = ABCLEN;
 	printf("%c : %g\t\t%c : %g\t%c : %g\n", abc, x[i], abc, f[i], abc, p[i]);
+	
 }
 
 
@@ -237,16 +277,15 @@ static void printarr()
 /* Counts the number of every letter occurring                              */
 /****************************************************************************/
 
-static int countChar(int y)
+static int countChar(int y, char *str)
 {
+	
 	FILE *fp;
-	fp = fopen("cipher.in", read);
+	fp = fopen(str, read);
 	int c = 0;
 	int count = 0;
-	if (fp == NULL)
-	{
-		printf("%s\n", "File cannot be opened...");
-	}
+	
+	checkfile(fp);
 	
 	while(!feof(fp))
 	{
@@ -259,6 +298,7 @@ static int countChar(int y)
 	}
 	fclose(fp);
 	return count;
+	
 }
 
 
@@ -269,20 +309,22 @@ static int countChar(int y)
 
 static void analyse()
 {
+	
+	char str[80];
+	printf("\nEnter name of file: ");
+  scanf("%s", str);
+	
 	char i = 'a';
 	int j = 0;
 	while(i <= 'z') 
 	{
-		//printf("\nj : %d\n", j);
-		x[j] = countChar(i);
+		x[j] = countChar(i, str);
 		i++;
 		j++;
 	}
-	//printf("%c\n", i);
 
 	i = ' ';
-	//printf("%d\n", j);
-	x[j] = countChar(i);
+	x[j] = countChar(i, str);
 	percent();
 	printarr();
 	printf("%s%d\n", "\nTotal characters: ", total);
@@ -297,7 +339,7 @@ static void analyse()
 /****************************************************************************/
 /****************************************************************************/
 
-void printt(char i)			 	{ printtext(i)		 ;}
+void printt()						  { printtext()		 ;}
 void listf()							{ listfiles()			 ;}
 void analysec()		 				{ analyse()				 ;}
 void decryptt()    				{ decrypt()				 ;}

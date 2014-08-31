@@ -32,20 +32,6 @@ static char get_choice() { scanf("%s", lnbuff); return(lnbuff[0]); }
 
 
 /*****************************************************************************/
-/* user will input which file to handle                                      */
-/*****************************************************************************/
-
-static int pickone() {
-  
-  char i;
-  scanf("%c", &i);
-  return i;
-  
-  }
-
-
-
-/*****************************************************************************/
 /*  dispmenu: display the user menu                                          */
 /*****************************************************************************/
 
@@ -88,10 +74,10 @@ void runmenu()
       switch(choice) {
 
          case 'm': case 'M': dispmenu();                        break;
-         case 'p': case 'P': listf(); printt(pickone());    break;
-         case 'a': case 'A': analysec();                        break;
-         case 'd': case 'D': decryptt();                        break;
-         case 'c': case 'C': cryptt();                          break;
+         case 'p': case 'P': listf(); printt();                 break;
+         case 'a': case 'A': listf(); analysec();               break;
+         case 'd': case 'D': listf(); decryptt();               break;
+         case 'c': case 'C': listf(); cryptt();                 break;
 
          case 'q': case 'Q': printf(" *** BYE BYE! ***");       break;
 

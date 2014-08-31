@@ -12,7 +12,7 @@
 /* function prototypes                                        */
 /**************************************************************/
 
-void printt(char i);
+void printt();
 void listf();
 void analysec();
 void decryptt();
